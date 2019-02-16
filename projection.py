@@ -2,10 +2,13 @@ import csv
 import numpy as np
 from sklearn.svm import SVR
 import matplotlib.pyplot as pyplot
+import sys
+
 
 
 dates = []
 prices = []
+
 
 
 def get_data(filename) :
@@ -21,7 +24,7 @@ def predict_prices(dates, prices, x):
     dates = np.reshape(dates,(len(dates), 1))
 
     svr_lin = SVR(kernel = 'linear', C=1e3)
-    svr_poly = SVR(kernel= 'poly', C = 1e3, degree = 2)
+    svr_poly = SVR(kernel= 'poly', C=1e3, degree = 2)
     svr_lin.fit(dates, prices)
     svr_poly.fit(dates, prices)
 
