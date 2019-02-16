@@ -1,25 +1,21 @@
 import React, {Component} from 'react';
 import './Chart.css'
 import {Line} from 'react-chartjs-2';
+// import '../../../../models'
+import API from '../../utils/API.js'
 
 class Chart extends Component {
     constructor(props){
         super(props);
         this.state={
             chartData:{
-                labels:['B', 'W', 'S', 'L', 'C', 'NB'],
+                labels:[],
                 datasets:[
                     {
                         label:'Boots',
                         borderColor:'rgba(255, 102, 102, 0.6)',
                         backgroundColor:'rgba(255, 102, 102, 0.6)',
                         data:[
-                            987651,
-                            123456,
-                            675467,
-                            768576,
-                            876598,
-                            567456
                         ],
                         yAxisId:'y-axis-1',
                     }, {
@@ -27,18 +23,37 @@ class Chart extends Component {
                         borderColor:'rgba(204, 153, 255, 0.6)',
                         backgroundColor:'rgba(204, 153, 255, 0.6)',
                         data:[
-                            187651,
-                            123456,
-                            175467,
-                            268576,
-                            276598,
-                            367456
                         ],
                         yAxisId:'y-axis-2',
                     }
                 ]
             }
         }
+    }
+    componentDidMount(){
+        API.getHistory(83935).then(res =>{
+            res.data.buying.map(obj => {
+                this.setState(state => ({
+                    chartData:{
+                        ...state.chartData,
+                        labels: state.chartData.labels.concat(new Date(obj.listing_datetime).toLocaleString('en-us', { month: 'short', day: 'numeric' }))
+                    }
+                }))
+
+                const dataSetsCopy = this.state.chartData.datasets.slice(0);
+
+                const dataCopy = dataSetsCopy[0].data.slice(0);
+                console.log(dataCopy);
+                dataSetsCopy[0].data = dataCopy.concat(obj.unit_price);
+
+                this.setState({
+                    data: Object.assign({}, this.state.data, {
+                        datasets: dataSetsCopy
+                    })
+                });
+                
+            })
+        })
     }
     render(){
         return(

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Item.css';
-import itemPrint from  '../../../../controllers/itemsController.js';
-import itemData from '../../../../routes/items/item.js'
+import getItem from '../../utils/API.js'
 
 class Item extends Component {
     render() {
@@ -10,7 +9,7 @@ class Item extends Component {
 className="item-component"
 >
 
-<span>{itemPrint()}</span>
+<span>{console.log(JSON.stringify(getItem(2424)))}</span>
 
 </Item>
         )}
