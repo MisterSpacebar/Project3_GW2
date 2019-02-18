@@ -7,10 +7,9 @@ module.exports = function (app) {
         .then(function(response){
             gemData = response.data;
             console.log(gemData);
+            res.send(gemData);
         }).catch(function(error){
             console.log(error);
-        }).then(function(){
-            res.send(gemData);
-        });
+        })
     });
 };
