@@ -38,31 +38,31 @@ class Chart extends Component {
     }
     // fires after successful mount
     componentDidMount(){
-        
-    //     API.getHistory(83935).then(res =>{
-    //         res.data.buying.map(obj => {
-    //             this.setState(state => ({
-    //                 chartData:{
-    //                     ...state.chartData,
-    //                     labels: state.chartData.labels.concat(new Date(obj.listing_datetime).toLocaleString('en-us', { month: 'short', day: 'numeric' }))
+
+        API.getHistory(83935).then(res =>{
+            res.data.buying.map(obj => {
+                this.setState(state => ({
+                    chartData:{
+                        ...state.chartData,
+                        labels: state.chartData.labels.concat(new Date(obj.listing_datetime).toLocaleString('en-us', { month: 'short', day: 'numeric' }))
                         
-    //                 }
-    //             }))
+                    }
+                }))
 
-    //             const dataSetsCopy = this.state.chartData.datasets.slice(0);
+                const dataSetsCopy = this.state.chartData.datasets.slice(0);
 
-    //             const dataCopy = dataSetsCopy[0].data.slice(0);
-    //             console.log(dataCopy);
-    //             dataSetsCopy[0].data = dataCopy.concat(obj.unit_price);
+                const dataCopy = dataSetsCopy[0].data.slice(0);
+                console.log(dataCopy);
+                dataSetsCopy[0].data = dataCopy.concat(obj.unit_price);
 
-    //             this.setState({
-    //                 data: Object.assign({}, this.state.data, {
-    //                     datasets: dataSetsCopy
-    //                 })
-    //             });
-    //         })
-    //     })
-    // }
+                this.setState({
+                    data: Object.assign({}, this.state.data, {
+                        datasets: dataSetsCopy
+                    })
+                });
+            })
+        })
+    }
     render(){
         return(
             <div className="Chart col s12">
