@@ -12,15 +12,21 @@ class Chart extends Component {
                 labels:[],
                 datasets:[
                     {
+                        // item name
                         label:'Boots',
+                        // line colour
                         borderColor:'rgba(255, 102, 102, 0.6)',
+                        // line bg colour
                         backgroundColor:'rgba(255, 102, 102, 0.6)',
                         data:[
                         ],
                         yAxisId:'y-axis-1',
                     }, {
+                        // item name
                         label:'Hat',
+                        // line colour
                         borderColor:'rgba(204, 153, 255, 0.6)',
+                        // line bg colour
                         backgroundColor:'rgba(204, 153, 255, 0.6)',
                         data:[
                         ],
@@ -30,6 +36,7 @@ class Chart extends Component {
             }
         }
     }
+    // fires after successful mount
     componentDidMount(){
         API.getHistory(83935).then(res =>{
             res.data.buying.map(obj => {
@@ -37,6 +44,7 @@ class Chart extends Component {
                     chartData:{
                         ...state.chartData,
                         labels: state.chartData.labels.concat(new Date(obj.listing_datetime).toLocaleString('en-us', { month: 'short', day: 'numeric' }))
+                        
                     }
                 }))
 
@@ -51,7 +59,6 @@ class Chart extends Component {
                         datasets: dataSetsCopy
                     })
                 });
-                
             })
         })
     }
