@@ -45,6 +45,23 @@ module.exports = function (app) {
             console.log(error);
             res.send("error");
         });
-        Promise.all([buying, selling]).then((values)=>res.send({buying: values[0], selling: values[1]} ));
+        Promise.all([buying, selling]).then(function(values){
+            // res.send({buying: values[0], selling: values[1]})
+
+            // var data = values[0].map(function(element){
+
+            // })
+            var b = values[0];
+            var s = values[1];
+            var data = [];
+            for(var i=0 ; i < 31 ; i++){
+                data[i] = {
+                    date: b[i].listing_datetime.slice(0,10),
+                    buying: b[i].unit_price,
+                    selling: s[i].unit_price
+                }
+            }
+            res.send(data);
+        });
     });
 };
