@@ -2,6 +2,7 @@
   "name": "project3_gw2",
   "version": "1.0.0",
   "description": "",
+  "proxy": "http://localhost:3001/",
   "main": "server.js",
   "dependencies": {
     "axios": "^0.18.0",
@@ -14,10 +15,12 @@
     "if-env": "^1.0.4",
     "lodash": "^4.17.11",
     "mongoose": "^5.4.11",
+    "morgan": "^1.9.1",
     "mysql": "^2.16.0",
     "nodemon": "^1.18.10",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "react-signup-login-component": "^1.2.0"
   },
   "devDependencies": {},
   "scripts": {
