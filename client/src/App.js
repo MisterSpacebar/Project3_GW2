@@ -11,28 +11,29 @@ import Login from './components/Login/Login';
 
 class App extends Component {
 
-  };
+};
 
-  render() {
-    return (
-      <div className="mainContainer">
+render() {
+  return (
+    <div className="mainContainer">
       <Row>
         <Router>
-        <div>
-          <NavBar />
-          <Switch>
-            {/* Link to Home */}
-            <Route exact path="/" component={Home} />
-            {/* Link to pop Login modal */}
-            <Route exact path='/signUp' component={SignUp} />
-            {/* Link to pop Sign Up modal */}
-            <Route exact path='/login' component={Login} />
-          </Switch>
-        </div>
-      </Router>
-      </Row>   
+          <div>
+            <NavBar />
+            <Switch>
+              {/* Link to Home */}
+              <Route exact path="/" component={Home} />
+              {/* Link to pop Login modal */}
+              <Route exact path='/signUp' component={SignUp} />
+              {/* Link to pop Sign Up modal */}
+              <Route exact path='/login' component={Login} />
+            </Switch>
+          </div>
+        </Router>
+      </Row>
     </div>
-    );
-  }
+  );
+}
+
 
 export default App;

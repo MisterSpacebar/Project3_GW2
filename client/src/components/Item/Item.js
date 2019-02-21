@@ -4,28 +4,28 @@ import getItem from '../../utils/API.js'
 import { Card, Button } from 'react-materialize';
 
 class Item extends Component {
-
+        constructor(props) {
+                super(props);
+        }
         render() {
-                const { 
-                        item,
-                        id,
-                } = this.props;
+                // const {
 
-                const {
-                        getItem
-                } = this.state;
-
+                //         getItem,
+                //         item,
+                //         id,
+                // } = this.state;
+                console.log(JSON.stringify(triggerGetItem(2424)))
                 return (
                         <Item className="item-component">
                                 <Card className="grey black-text">best selling item 1
-                                        {/* <Button waves='light' onClick={() => this.props.loadItem(this.state.id)}>Test!</Button>
-                                        <div>{JSON.stringify(this.state.item)}</div> */}
-                                        <Button waves='light' onClick={() => getItem(this.state.id)}>Test!</Button>
+
+                                        <Button waves='light' onClick={() => this.props.triggerGetItem(this.state.id)}>Test!</Button>
                                         <div>{JSON.stringify(this.state.item)}</div>
                                 </Card>
                         </Item>
 
                 )
+                
         }
 }
 export default Item;

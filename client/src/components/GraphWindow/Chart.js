@@ -16,14 +16,7 @@ class Chart extends Component {
     }
     // fires after successful mount
     componentDidMount(){
-        API.getHistory(this.state.id)
-        .then(response => {
-            console.log(response.data.chartData);
-            this.setState({chartData:response.data.chartData});
-            console.log(response.data.name);
-            this.setState({name:response.data.name});
-            this.setState({img:response.data.icon});
-        })
+        
     }
     render(){
         return(

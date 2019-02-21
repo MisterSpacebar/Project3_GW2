@@ -13,9 +13,6 @@ class Carousel extends Component {
             id
         } = this.props;
 
-        const {
-            loadItem
-        } = this.state;
         return (
             <Col s={12} >
                 <OwlCarousel
