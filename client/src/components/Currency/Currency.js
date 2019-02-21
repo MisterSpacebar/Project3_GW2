@@ -8,7 +8,7 @@ const currency = () => (
         title='Currency ' 
         //actions={[<a href='#'>This is a link</a>]}
         >
-    dollar-> gems -> gold
+    <h6><span>dollar</span>-> <span>gems</span> -> <span>gold</span></h6>
     </Card>
 );
 

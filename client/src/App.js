@@ -16,7 +16,7 @@ class App extends Component {
   componentDidMount() {
   };
   loadItem = id => {
-    console.log('i got id ', id)
+    console.log('ID return: ' , id)
     API.getItem(id)
       .then(res =>
         this.setState({ item: res.data.data})
