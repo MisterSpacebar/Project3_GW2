@@ -7,32 +7,33 @@ import API from '../../utils/API.js'
 class Chart extends Component {
     constructor(props){
         super(props);
-        this.state={
+        this.
+        state={
             chartData:{
-                labels:[],
-                datasets:[
-                    {
-                        // item name
-                        label:'Boots',
-                        // line colour
-                        borderColor:'rgba(255, 102, 102, 0.6)',
-                        // line bg colour
-                        backgroundColor:'rgba(255, 102, 102, 0.6)',
-                        data:[
-                        ],
-                        yAxisId:'y-axis-1',
-                    }, {
-                        // item name
-                        label:'Hat',
-                        // line colour
-                        borderColor:'rgba(204, 153, 255, 0.6)',
-                        // line bg colour
-                        backgroundColor:'rgba(204, 153, 255, 0.6)',
-                        data:[
-                        ],
-                        yAxisId:'y-axis-2',
-                    }
-                ]
+                // labels:[],
+                // datasets:[
+                //     {
+                //         // item name
+                //         label:'Boots',
+                //         // line colour
+                //         borderColor:'rgba(255, 102, 102, 0.6)',
+                //         // line bg colour
+                //         backgroundColor:'rgba(255, 102, 102, 0.6)',
+                //         data:[
+                //         ],
+                //         yAxisId:'y-axis-1',
+                //     }, {
+                //         // item name
+                //         label:'Hat',
+                //         // line colour
+                //         borderColor:'rgba(204, 153, 255, 0.6)',
+                //         // line bg colour
+                //         backgroundColor:'rgba(204, 153, 255, 0.6)',
+                //         data:[
+                //         ],
+                //         yAxisId:'y-axis-2',
+                //     }
+                // ]
             }
         }
     }
@@ -62,7 +63,12 @@ class Chart extends Component {
     //             });
     //         })
     //     })
-    // }
+        API.getHistory(2424)
+        .then(response => {
+            console.log(response.data.chartData);
+            this.setState({chartData:response.data.chartData});
+        })
+    }
     render(){
         return(
             <div className="Chart col s12">

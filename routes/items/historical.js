@@ -24,7 +24,6 @@ var getHighScores = function(data){
     var sellResult = [];
     var sellData = data.data.results;
     sellDates.forEach((date)=>{
-
         sellResult.push(sellData.filter((item)=>item.listing_datetime.slice(0,10) === date)[0]);
     });
    return sellResult;
@@ -53,13 +52,44 @@ module.exports = function (app) {
             // })
             var b = values[0];
             var s = values[1];
-            var data = [];
-            for(var i=0 ; i < 31 ; i++){
-                data[i] = {
-                    date: b[i].listing_datetime.slice(0,10),
-                    buying: b[i].unit_price,
-                    selling: s[i].unit_price
+            var data = {
+                chartData:{
+                    labels:[],
+                    datasets:[
+                        {
+                            // item name
+                            label:'Buy',
+                            // line colour
+                            borderColor:'rgba(255, 102, 102, 0.6)',
+                            // line bg colour
+                            backgroundColor:'rgba(255, 102, 102, 0.6)',
+                            data:[
+                            ],
+                            yAxisId:'y-axis-1',
+                        }, {
+                            // item name
+                            label:'Sell',
+                            // line colour
+                            borderColor:'rgba(204, 153, 255, 0.6)',
+                            // line bg colour
+                            backgroundColor:'rgba(204, 153, 255, 0.6)',
+                            data:[
+                            ],
+                            yAxisId:'y-axis-2',
+                        }
+                    ]
                 }
+            };
+            for(var i=0 ; i < 31 ; i++){
+                // data[i] = {
+                //     date: b[i].listing_datetime.slice(0,10),
+                //     buying: b[i].unit_price,
+                //     selling: s[i].unit_price
+                // }
+
+                data.chartData.labels[i] = b[i].listing_datetime.slice(0,10);
+                data.chartData.datasets[0].data[i] = b[i].unit_price;
+                data.chartData.datasets[1].data[i] = s[i].unit_price;
             }
             res.send(data);
         });
