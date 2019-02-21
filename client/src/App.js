@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import Tappable from 'react-tappable';
+import './App.css';
+import Loginscreen from './components/Loginscreen'
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
-injectTapEventPlugin();
-import './App.css';
-import Loginscreen from './Loginscreen'
+// injectTapEventPlugin();
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -34,12 +35,12 @@ const style = {
 };
 export default App;
 
-if(response.data.code == 200){
-  console.log("Login successfull");
-  var uploadScreen=[];
-  uploadScreen.push(<UploadScreen appContext={self.props.appContext}/>)
-  self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
-  }
+// if(response.data.code == 200){
+//   console.log("Login successfull");
+//   var uploadScreen=[];
+//   uploadScreen.push(<UploadScreen appContext={self.props.appContext}/>)
+//   self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
+//   }
 
 // import React, { Component } from 'react';
 // import './App.css';
