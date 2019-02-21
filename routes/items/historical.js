@@ -44,7 +44,14 @@ module.exports = function (app) {
             console.log(error);
             res.send("error");
         });
-        Promise.all([buying, selling]).then(function(values){
+        var naming = axios.get("https://api.guildwars2.com/v2/items/"+req.params.id)
+        .then(function(response){
+            return response.data
+        }).catch(function(error){
+            console.log(error);
+            res.send("error");
+        })
+        Promise.all([buying, selling, naming]).then(function(values){
             // res.send({buying: values[0], selling: values[1]})
 
             // var data = values[0].map(function(element){
@@ -53,6 +60,8 @@ module.exports = function (app) {
             var b = values[0];
             var s = values[1];
             var data = {
+                name: values[2].name,
+                img: values[2].icon,
                 chartData:{
                     labels:[],
                     datasets:[
