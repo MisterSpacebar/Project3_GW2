@@ -1,4 +1,5 @@
 import React from 'react';
+import { Modal } from 'react-materialize';
 
 class Login extends React.Component {
     state = {
@@ -20,14 +21,19 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div className="Login">
-                <form onSubmit={this.handleSubmit}>
-                    <h3>Sign in</h3>
-                    <input type="text" ref="username" placeholder="enter you username" />
-                    <input type="password" ref="password" placeholder="enter password" />
-                    <input type="submit" value="Login" />
-                </form>
-            </div>
+            <Modal id="modal1" className="modal Login" trigger= '/login'>
+                <div class="modal-content">
+                    <form onSubmit={this.handleSubmit}>
+                        <h3>Login</h3>
+                        <input type="text" ref="username" placeholder="enter you username" />
+                        <input type="password" ref="password" placeholder="enter password" />
+                        <input type="submit" value="Login" />
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
+            </Modal>
         )
     }
 }

@@ -5,7 +5,9 @@ import API from "./utils/API";
 import Home from "./pages/Home/Home"
 
 import NavBar from './components/NavBar/NavBar';
-import { Row,Button} from 'react-materialize';
+import { Row } from 'react-materialize';
+import SignUp from './components/SignUp/SignUp';
+import Login from './components/Login/Login';
 
 
 class App extends Component {
@@ -16,7 +18,7 @@ class App extends Component {
   componentDidMount() {
   };
   loadItem = id => {
-    console.log('ID return: ' , id)
+    console.log('Item ID : ' , id)
     API.getItem(id)
       .then(res =>
         this.setState({ item: res.data.data})
@@ -32,17 +34,16 @@ class App extends Component {
         <div>
           <NavBar />
           <Switch>
+            {/* Link to Home */}
             <Route exact path="/" component={Home} />
-            {/* <Route exact path="/user" component={User} />
-            <Route exact path="/about" component={About} /> */}
+            {/* Link to pop Login modal */}
+            <Route exact path='/signUp' component={SignUp} />
+            {/* Link to pop Sign Up modal */}
+            <Route exact path='/login' component={Login} />
           </Switch>
         </div>
       </Router>
       </Row>   
-      <Row>
-          <Button waves='light' onClick={() => this.loadItem(this.state.id)}>Test!</Button>
-          <div>{JSON.stringify(this.state.item)}</div>
-      </Row>
     </div>
     );
   }
