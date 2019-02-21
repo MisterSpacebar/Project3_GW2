@@ -13,6 +13,14 @@ export default {
   getItem: function (id) {
     return axios.get("/api/item/" + id);
   },
+  // loadItem: function (id) {
+  //   console.log('Item ID : ', id)
+  //   API.getItem(id)
+  //     .then(res =>
+  //       this.setState({ item: res.data.data })
+  //     )
+  //     .catch(err => console.log(err));
+  // },
   searchItem: function (name) {
     axios.get("http://www.gw2spidy.com/api/v0.9/json/item-search/" + name + "/1")
       .then(function (response) {
