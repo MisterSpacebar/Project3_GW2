@@ -58,7 +58,7 @@ module.exports = function (app) {
                     datasets:[
                         {
                             // item name
-                            label:'Buy',
+                            label:'Buy Listings',
                             // line colour
                             borderColor:'rgba(255, 102, 102, 0.6)',
                             // line bg colour
@@ -68,7 +68,7 @@ module.exports = function (app) {
                             yAxisId:'y-axis-1',
                         }, {
                             // item name
-                            label:'Sell',
+                            label:'Sell Listings',
                             // line colour
                             borderColor:'rgba(204, 153, 255, 0.6)',
                             // line bg colour

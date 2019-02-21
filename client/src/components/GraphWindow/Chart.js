@@ -63,7 +63,7 @@ class Chart extends Component {
     //             });
     //         })
     //     })
-        API.getHistory(2424)
+        API.getHistory(746)
         .then(response => {
             console.log(response.data.chartData);
             this.setState({chartData:response.data.chartData});

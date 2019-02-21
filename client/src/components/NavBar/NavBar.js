@@ -21,8 +21,8 @@ class navBar extends React.Component {
             }
           }
         /> */}
-      <Input value={this.state.term} onChange = {event => this.setState({term : event.target.value}) }/>
-      <NavItem href='/' left>Home</NavItem>
+      <Input style={{backgroundColor:'#FFFFFF',height:'62px'}} type='text' label="search" value={this.state.term} onChange={event => this.setState({term : event.target.value}) }/>
+      <NavItem style={{marginLeft:'25px'}} href='/' left>Home</NavItem>
       <NavItem href='/user'left>User</NavItem>
       <NavItem href='/about'left>About</NavItem>
       </Navbar> 
