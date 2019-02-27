@@ -14,8 +14,13 @@
     "if-env": "^1.0.4",
     "lodash": "^4.17.11",
     "mongoose": "^5.4.11",
+<<<<<<< HEAD
     "morgan": "^1.9.1",
     "mysql": "^2.16.0",
+=======
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.10",
+>>>>>>> 55095c4c84b857bb663a9851d2a6ff419e584dde
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"
   },
