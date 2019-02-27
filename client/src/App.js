@@ -23,7 +23,7 @@ class App extends Component {
       )
       .catch(err => console.log(err));
   };
-
+ 
   render() {
     return (
       <div className="mainContainer">
@@ -39,10 +39,10 @@ class App extends Component {
         </div>
       </Router>
       </Row>   
-      <Row>
+      {/* <Row>
           <Button waves='light' onClick={() => this.loadItem(this.state.id)}>Test!</Button>
           <div>{JSON.stringify(this.state.item)}</div>
-      </Row>
+      </Row> */}
     </div>
     );
   }

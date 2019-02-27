@@ -51,7 +51,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 
 // routes ======================================================================
-require('.routes/app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+require('./routes/app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 // routing for economy data
 require('./routes/items/item.js')(app);
 require('./routes/items/historical.js')(app);
