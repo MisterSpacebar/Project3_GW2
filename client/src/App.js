@@ -1,49 +1,72 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import API from "./utils/API";
-import Home from "./pages/Home/Home"
-
+import ControlPanel from "./components/ControlPanel/ControlPanel"
 import NavBar from './components/NavBar/NavBar';
-import { Row,Button} from 'react-materialize';
+import { Row, Button, Col } from 'react-materialize';
+import Chart from './components/GraphWindow/Chart';
+import UserFavourites from './components/UserFavourites/UserFavourites';
+import Currency from './components/Currency/Currency';
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
 class App extends Component {
-  state={
-    item:[],
-    id:24
+  state = {
+    id: 24,
+    itemReturn: [],
+    itemName: "",
+    buyPrice: "",
+    sellPrice: ""
+
   }
-  componentDidMount() {
-  };
   loadItem = id => {
-    console.log('i got id ', id)
+    console.log('Id Returned: ', id)
     API.getItem(id)
       .then(res =>
-        this.setState({ item: res.data.data})
+        this.setState({ itemReturn: res.data.data, itemName: res.data.data.name, buyPrice: res.data.pricing.buyng.price, sellPrice: res.data.pricing.selling.price, })
       )
       .catch(err => console.log(err));
   };
 
+  componentDidMount() {
+    this.loadItem()
+  };
+
+
   render() {
+
+    const { itemReturn, itemName, buyPrice, sellPrice } = this.state;
+
     return (
       <div className="mainContainer">
-      <Row>
-        <Router>
-        <div>
-          <NavBar />
-          <Switch>
+        <Row>
+          <div>
+            <NavBar />
+            <Row>
+              <UserFavourites />
+            </Row>
+            <Row>
+              <Col m={8} s={12}>
+                <Chart />
+              </Col>
+              <Col m={4} s={12}>
+                <Currency />
+                <ControlPanel className="controlPanel" />
+              </Col>
+            </Row>
+
+            {/* <Switch>
             <Route exact path="/" component={Home} />
-            {/* <Route exact path="/user" component={User} />
-            <Route exact path="/about" component={About} /> */}
-          </Switch>
-        </div>
-      </Router>
-      </Row>   
-      <Row>
+            <Route exact path="/user" component={User} />
+            <Route exact path="/about" component={About} />
+          </Switch> */}
+          </div>
+        </Row>
+        <Row>
           <Button waves='light' onClick={() => this.loadItem(this.state.id)}>Test!</Button>
           <div>{JSON.stringify(this.state.item)}</div>
-      </Row>
-    </div>
+        </Row>
+      </div>
     );
   }
 }

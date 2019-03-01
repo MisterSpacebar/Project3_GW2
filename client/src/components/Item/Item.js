@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+import React, { Card,  } from 'react';
 import './Item.css';
-import getItem from '../../utils/API.js'
 
-class Item extends Component {
-    render() {
+const item = (props) => {
         return (
-<Item 
-className="item-component"
->
 
-<span>{console.log(JSON.stringify(getItem(2424)))}</span>
+                <Card className="Item">
 
-</Item>
-        )}
-}
-export default Item;
+                        <p> {props.name} </p>
+                        <p> {props.buyPrice} </p>
+                        <p> {props.sellPrice} </p>
+
+                </Card>
+
+        )
+};
+
+export default item;

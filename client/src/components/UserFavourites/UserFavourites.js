@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './Carousel.css';
+import './UserFavourites.css';
 import {Card, Col} from 'react-materialize';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
-class Carousel extends Component {
+class UserFavourites extends Component {
     render() {
         return (
 <Col s={12} >
@@ -32,4 +32,4 @@ class Carousel extends Component {
 </Col>
         )}
 }
-export default Carousel;
+export default UserFavourites;
