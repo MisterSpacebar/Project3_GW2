@@ -8,65 +8,58 @@ class Chart extends Component {
     constructor(props){
         super(props);
         this.state={
-            chartData:{
-                labels:[],
-                datasets:[
-                    {
-                        // item name
-                        label:'Boots',
-                        // line colour
-                        borderColor:'rgba(255, 102, 102, 0.6)',
-                        // line bg colour
-                        backgroundColor:'rgba(255, 102, 102, 0.6)',
-                        data:[
-                        ],
-                        yAxisId:'y-axis-1',
-                    }, {
-                        // item name
-                        label:'Hat',
-                        // line colour
-                        borderColor:'rgba(204, 153, 255, 0.6)',
-                        // line bg colour
-                        backgroundColor:'rgba(204, 153, 255, 0.6)',
-                        data:[
-                        ],
-                        yAxisId:'y-axis-2',
-                    }
-                ]
-            }
-        }
+            id: 90011,
+            name: "",
+            img:"",
+            chartData:{}
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
     // fires after successful mount
     componentDidMount(){
-
-        API.getHistory(83935).then(res =>{
-            res.data.buying.map(obj => {
-                this.setState(state => ({
-                    chartData:{
-                        ...state.chartData,
-                        labels: state.chartData.labels.concat(new Date(obj.listing_datetime).toLocaleString('en-us', { month: 'short', day: 'numeric' }))
-                        
-                    }
-                }))
-
-                const dataSetsCopy = this.state.chartData.datasets.slice(0);
-
-                const dataCopy = dataSetsCopy[0].data.slice(0);
-                console.log(dataCopy);
-                dataSetsCopy[0].data = dataCopy.concat(obj.unit_price);
-
-                this.setState({
-                    data: Object.assign({}, this.state.data, {
-                        datasets: dataSetsCopy
-                    })
-                });
-            })
-        })
+        
     }
+    componentDidUpdate(){
+
+    }
+    handleSubmit(e){
+        e.preventDefault();
+        const value = this.state.id
+
+        API.getHistory(value)
+        .then(response => {
+            console.log(response.data.data);
+            console.log(response.data.chartData);
+            // this.setState({chartData:response.data.chartData});
+            console.log(response.data.name);
+            // this.setState({name:response.data.name});
+            // this.setState({img:response.data.icon});
+            this.setState({
+                chartData:response.data.chartData,
+                name:response.data.name,
+                img:response.data.icon
+            });
+        })
+    };
+    handleChange(e){
+        e.preventDefault();
+        const target = e.target;
+        const value = target.value;
+
+        this.setState({
+            id: value
+        })
+    };
     render(){
         return(
             <div className="Chart col s12">
-               <h2>Graph Name</h2>
+                <form onSubmit={this.handleSubmit}>
+                    <input type='text' name="serach" value={this.state.id} onChange={this.handleChange} />
+                    <input type="submit" name="searchButton" value="Submit" />
+                </form>
+                <img src={this.state.img}></img>
+                <h4>{this.state.name}</h4>
                 <Line
                     data={this.state.chartData}
                     options={{}}
@@ -76,4 +69,4 @@ class Chart extends Component {
         )
     }
 }
-export default Chart; 
+export default Chart;

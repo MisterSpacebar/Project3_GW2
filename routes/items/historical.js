@@ -24,7 +24,6 @@ var getHighScores = function(data){
     var sellResult = [];
     var sellData = data.data.results;
     sellDates.forEach((date)=>{
-
         sellResult.push(sellData.filter((item)=>item.listing_datetime.slice(0,10) === date)[0]);
     });
    return sellResult;
@@ -45,7 +44,14 @@ module.exports = function (app) {
             console.log(error);
             res.send("error");
         });
-        Promise.all([buying, selling]).then(function(values){
+        var naming = axios.get("https://api.guildwars2.com/v2/items/"+req.params.id)
+        .then(function(response){
+            return response.data
+        }).catch(function(error){
+            console.log(error);
+            res.send("error");
+        })
+        Promise.all([buying, selling, naming]).then(function(values){
             // res.send({buying: values[0], selling: values[1]})
 
             // var data = values[0].map(function(element){
@@ -53,13 +59,46 @@ module.exports = function (app) {
             // })
             var b = values[0];
             var s = values[1];
-            var data = [];
-            for(var i=0 ; i < 31 ; i++){
-                data[i] = {
-                    date: b[i].listing_datetime.slice(0,10),
-                    buying: b[i].unit_price,
-                    selling: s[i].unit_price
+            var data = {
+                name: values[2].name,
+                img: values[2].icon,
+                chartData:{
+                    labels:[],
+                    datasets:[
+                        {
+                            // item name
+                            label:'Buy Listings',
+                            // line colour
+                            borderColor:'rgba(255, 102, 102, 0.6)',
+                            // line bg colour
+                            backgroundColor:'rgba(255, 102, 102, 0.6)',
+                            data:[
+                            ],
+                            yAxisId:'y-axis-1',
+                        }, {
+                            // item name
+                            label:'Sell Listings',
+                            // line colour
+                            borderColor:'rgba(204, 153, 255, 0.6)',
+                            // line bg colour
+                            backgroundColor:'rgba(204, 153, 255, 0.6)',
+                            data:[
+                            ],
+                            yAxisId:'y-axis-2',
+                        }
+                    ]
                 }
+            };
+            for(var i=30 ; i > 0 ; i--){
+                // data[i] = {
+                //     date: b[i].listing_datetime.slice(0,10),
+                //     buying: b[i].unit_price,
+                //     selling: s[i].unit_price
+                // }
+
+                data.chartData.labels.push( b[i].listing_datetime.slice(0,10) );
+                data.chartData.datasets[0].data.push( b[i].unit_price );
+                data.chartData.datasets[1].data.push( s[i].unit_price );
             }
             res.send(data);
         });
