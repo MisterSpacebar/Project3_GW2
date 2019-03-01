@@ -14,8 +14,9 @@
     "if-env": "^1.0.4",
     "lodash": "^4.17.11",
     "mongoose": "^5.4.11",
+    "morgan": "^1.9.1",
     "mysql": "^2.16.0",
-    "nodemon": "^1.18.10",
+    "nodemon": "^1.18git .10",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"
   },
