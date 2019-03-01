@@ -14,7 +14,6 @@ class Item extends Component {
                 //         item,
                 //         id,
                 // } = this.state;
-                console.log(JSON.stringify(triggerGetItem(2424)))
                 return (
                         <Item className="item-component">
                                 <Card className="grey black-text">best selling item 1

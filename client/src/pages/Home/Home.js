@@ -4,11 +4,11 @@ import Carousel from '../../components/Carousel/Carousel';
 import Currency from '../../components/Currency/Currency';
 import ItemsBest from '../../components/ControlPanel/ItemsBestCollection';
 import { Row, Col } from 'react-materialize';
-import API from "./utils/API.js";
+
 
 class Home extends Component {
 
-    contructor(props) {
+    constructor(props) {
         super(props);
         console.log(props);
         this.state = {

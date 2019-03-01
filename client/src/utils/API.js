@@ -21,12 +21,14 @@ export default {
         console.log(error);
       })
   },
-  getItemHistory: function () {API.getHistory(this.state.id)
+  getItemHistory: function () {
+    this.getHistory(this.state.id)
     .then(response => {
-        console.log(response.data.chartData);
-        this.setState({chartData:response.data.chartData});
-        console.log(response.data.name);
-        this.setState({name:response.data.name});
-        this.setState({img:response.data.icon});
+      console.log(response.data.chartData);
+      this.setState({ chartData: response.data.chartData });
+      console.log(response.data.name);
+      this.setState({ name: response.data.name });
+      this.setState({ img: response.data.icon });
     })
-};
+  },
+}

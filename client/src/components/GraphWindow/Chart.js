@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import './Chart.css'
 import {Line} from 'react-chartjs-2';
 // import '../../../../models'
-import API from '../../utils/API.js'
 
 class Chart extends Component {
     constructor(props){
