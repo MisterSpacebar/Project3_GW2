@@ -24,14 +24,14 @@ class ItemBestWrapper extends Component {
     }
     
     componentDidMount() {
-        this.setDefaultState()
+        this.itemBestBuyHandler()
       };
     
 
-    setDefaultState = () => {
-        const defaultData = this.state.itemBestBuyData;
-        this.setState({ data: defaultData });
-    }
+    // setDefaultState = () => {
+    //     const defaultData = this.state.itemBestBuyData;
+    //     this.setState({ data: defaultData });
+    // }
 
     itemBestBuyHandler = () => {
         const dataBuy = this.state.itemBestBuyData;
