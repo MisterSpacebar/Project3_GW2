@@ -10,8 +10,8 @@ class Currency extends Component {
     loadCurrency =()=>{
         API.getGems()
           .then(res =>
-            this.setState({ quantity: res.data.data.quantity, 
-                coins_per_gem: res.data.data.coins_per_gem })
+            this.setState({ quantity: res.data.quantity, 
+                coins_per_gem: res.data.coins_per_gem })
           )
           .catch(err => console.log(err));
       }

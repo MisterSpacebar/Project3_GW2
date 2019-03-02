@@ -56,6 +56,7 @@ require('./routes/app/routes.js')(app, passport); // load our routes and pass in
 require('./routes/items/item.js')(app);
 require('./routes/items/historical.js')(app);
 require('./routes/items/gems.js')(app);
+require('./routes/items/pricing.js')(app);
 // routing for account-based character data
 require('./routes/account/account.js')(app);
 

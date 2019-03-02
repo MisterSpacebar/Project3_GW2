@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-var token = ""; //needs to add arenanet API key
+var token = ""; //needs to add arenanet API keygit 
 
 module.exports = function (app) {
 
