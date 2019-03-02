@@ -1,16 +1,36 @@
-import React from "react";
+import React, {Component} from "react";
+import API from "../../utils/API";
 import {Card} from 'react-materialize';
 
-const currency = () => (
-    <Card 
-        className='grey lighten-2' 
-        textClassName='black-text' 
-        title='Currency ' 
-        //actions={[<a href='#'>This is a link</a>]}
-        >
-    dollar-> gems -> gold
-    </Card>
-);
+class Currency extends Component {
+    state = {
+        quantity:0,
+        coins_per_gem:0
+    }
+    loadCurrency =()=>{
+        API.getGems()
+          .then(res =>
+            this.setState({ quantity: res.data.data.quantity, 
+                coins_per_gem: res.data.data.coins_per_gem })
+          )
+          .catch(err => console.log(err));
+      }
+        componentDidMount() {
+         this.loadCurrency();
+        };
+
+    render(){
+        return(  
+        <Card 
+            className='grey lighten-2' 
+            textClassName='black-text' 
+            title='Currency ' 
+            >
+            Coins per gem {this.state.coins_per_gem}, 
+            quantity {this.state.coins_per_gem}
+        </Card>
+        )}
+};
 
 
-export default currency;
+export default Currency;

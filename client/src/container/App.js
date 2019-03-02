@@ -11,33 +11,40 @@ import ItemBestWrapper from '../components/ItemBestWrapper/ItemBestWrapper'
 
 
 class App extends Component {
-  state = {
-    id: 24,
-    itemReturn: [],
-    itemName: "",
-    buyPrice: "",
-    sellPrice: ""
+  // state = {
+  //   currency:[]
+  //   id: 24,
+  //   itemReturn: [],
+  //   itemName: "",
+  //   buyPrice: "",
+  //   sellPrice: ""
 
-  }
+  // }
 
 
-  loadItem = id => {
-    console.log('Id Returned: ', id)
-    API.getItem(id)
-      .then(res =>
-        this.setState({ itemReturn: res.data.data, itemName: res.data.data.name, buyPrice: res.data.pricing.buyng.price, sellPrice: res.data.pricing.selling.price, })
-      )
-      .catch(err => console.log(err));
-  };
+  // loadItem = id => {
+  //   console.log('Id Returned: ', id)
+  //   API.getItem(id)
+  //     .then(res =>
+  //       this.setState({ itemReturn: res.data.data, itemName: res.data.data.name, buyPrice: res.data.pricing.buyng.price, sellPrice: res.data.pricing.selling.price, })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
 
-  componentDidMount() {
-    this.loadItem()
-  };
+// loadCurrency =()=>{
+//   API.getGems()
+//     .then(res =>
+//       this.setState({ itemReturn: res.data.data, itemName: res.data.data.name, buyPrice: res.data.pricing.buyng.price, sellPrice: res.data.pricing.selling.price, })
+//     )
+//     .catch(err => console.log(err));
+// }
+//   componentDidMount() {
+//    // this.loadItem()
+//    this.loadCurrency();
+//   };
 
 
   render() {
-
-    const { itemReturn, itemName, buyPrice, sellPrice } = this.state;
 
     return (
       <div className="mainContainer">
@@ -65,8 +72,8 @@ class App extends Component {
           </div>
         </Row>
         <Row>
-          <Button waves='light' onClick={() => this.loadItem(this.state.id)}>Test!</Button>
-          <div>{JSON.stringify(this.state.item)}</div>
+          {/* <Button waves='light' onClick={() => this.loadItem(this.state.id)}>Test!</Button>
+          <div>{JSON.stringify(this.state.item)}</div> */}
         </Row>
       </div>
     );
