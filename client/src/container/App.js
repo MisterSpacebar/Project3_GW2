@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import API from "./utils/API";
-import ControlPanel from "./components/ControlPanel/ControlPanel"
-import NavBar from './components/NavBar/NavBar';
+import API from "../utils/API";
+import NavBar from '../components/NavBar/NavBar';
 import { Row, Button, Col } from 'react-materialize';
-import Chart from './components/GraphWindow/Chart';
-import UserFavourites from './components/UserFavourites/UserFavourites';
-import Currency from './components/Currency/Currency';
+import Chart from '../components/GraphWindow/Chart';
+import UserFavourites from '../components/UserFavourites/UserFavourites';
+import Currency from '../components/Currency/Currency';
+import ItemBestWrapper from '../components/ItemBestWrapper/ItemBestWrapper'
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
@@ -19,6 +19,8 @@ class App extends Component {
     sellPrice: ""
 
   }
+
+
   loadItem = id => {
     console.log('Id Returned: ', id)
     API.getItem(id)
@@ -51,7 +53,7 @@ class App extends Component {
               </Col>
               <Col m={4} s={12}>
                 <Currency />
-                <ControlPanel className="controlPanel" />
+                <ItemBestWrapper />
               </Col>
             </Row>
 
