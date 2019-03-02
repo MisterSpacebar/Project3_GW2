@@ -1,4 +1,5 @@
 import React from "react";
+//import API from "../../utils/API/";
 import {Navbar, NavItem, Autocomplete} from 'react-materialize';
 
 const navBar = () => (
@@ -23,3 +24,14 @@ const navBar = () => (
 
 
 export default navBar;
+
+//put it into new  copyArray.[...]
+//choose the item in the seach by id
+//map copyArray with Item element inside of the carousel 
+// change state for name, price Sell, price Buy
+
+//optional include little Grapgh with loaded history inside of Item component
+
+//each element has id
+//onClick(id) pass history to graph
+//graph will create an array of selected id, which also should be removed
