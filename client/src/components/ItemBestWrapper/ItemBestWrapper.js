@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Collection, Button } from 'react-materialize';
-import Item from "./ItemBestCollection/ItemBest/ItemBest";
 import ItemBestCollection from "./ItemBestCollection/ItemBestCollection";
-import itemBestCollection from "./ItemBestCollection/ItemBestCollection";
 
 class ItemBestWrapper extends Component {
     state = {
@@ -27,12 +25,6 @@ class ItemBestWrapper extends Component {
         this.itemBestBuyHandler()
       };
     
-
-    // setDefaultState = () => {
-    //     const defaultData = this.state.itemBestBuyData;
-    //     this.setState({ data: defaultData });
-    // }
-
     itemBestBuyHandler = () => {
         const dataBuy = this.state.itemBestBuyData;
         this.setState({ data: dataBuy });
@@ -42,21 +34,12 @@ class ItemBestWrapper extends Component {
         const dataSell = this.state.itemBestSellData;
         this.setState({ data: dataSell });
     }
-
-
-    //   itemBestMapper = props => {
-    //       if (Tab.title === "best-buy" && Tab.class === "active") {
-
-    //       }
-    //   }
-
     render() {
         return (
             <div className="wrapper">
-
                 <div>
-                    <Button title="best-buy" onClick={this.itemBestBuyHandler}>Best Buy</Button>
-                    <Button title="best-sell" onClick={this.itemBestSellHandler} active>Best Sell</Button>
+                    <Button title="best-buy" onClick={this.itemBestBuyHandler} active>Best Buy</Button>
+                    <Button title="best-sell" onClick={this.itemBestSellHandler} >Best Sell</Button>
                 </div>
                 <Collection>
                     <ItemBestCollection itemsBest={this.state.data} />
