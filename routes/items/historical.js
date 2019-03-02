@@ -73,6 +73,7 @@ module.exports = function (app) {
             });
 
             var data = {
+                id: req.params.id,
                 name: values[2].name,
                 img: values[2].icon,
                 chartData:{
