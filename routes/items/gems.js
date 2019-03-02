@@ -7,6 +7,7 @@ module.exports = function (app) {
         .then(function(response){
             gemData = response.data;
             console.log(gemData);
+            // sends gem data to front end (currency data per single gem for 1000 gems)
             res.send(gemData);
         }).catch(function(error){
             console.log(error);
