@@ -57,13 +57,26 @@ module.exports = function (app) {
             // var data = values[0].map(function(element){
 
             // })
-            var b = values[0];
-            var s = values[1];
+            var b = values[0].slice(0,31);
+            var s = values[1].slice(0,31);
+
+            var bu = b.map(function(element){
+                return element.unit_price
+            })
+
+            var se = s.map(function(element){
+                return element.unit_price
+            });
+
+            var dates = b.map(function(element){
+                return element.listing_datetime.slice(0,10)
+            });
+
             var data = {
                 name: values[2].name,
                 img: values[2].icon,
                 chartData:{
-                    labels:[],
+                    labels:dates.reverse(),
                     datasets:[
                         {
                             // item name
@@ -72,8 +85,7 @@ module.exports = function (app) {
                             borderColor:'rgba(255, 102, 102, 0.6)',
                             // line bg colour
                             backgroundColor:'rgba(255, 102, 102, 0.6)',
-                            data:[
-                            ],
+                            data:bu.reverse(),
                             yAxisId:'y-axis-1',
                         }, {
                             // item name
@@ -82,25 +94,26 @@ module.exports = function (app) {
                             borderColor:'rgba(204, 153, 255, 0.6)',
                             // line bg colour
                             backgroundColor:'rgba(204, 153, 255, 0.6)',
-                            data:[
-                            ],
+                            data:se.reverse(),
                             yAxisId:'y-axis-2',
                         }
                     ]
                 }
             };
-            for(var i=30 ; i > 0 ; i--){
-                // data[i] = {
-                //     date: b[i].listing_datetime.slice(0,10),
-                //     buying: b[i].unit_price,
-                //     selling: s[i].unit_price
-                // }
+            // for(var i=31 ; i > 0 ; i--){
+            //     // data[i] = {
+            //     //     date: b[i].listing_datetime.slice(0,10),
+            //     //     buying: b[i].unit_price,
+            //     //     selling: s[i].unit_price
+            //     // }
 
-                data.chartData.labels.push( b[i].listing_datetime.slice(0,10) );
-                data.chartData.datasets[0].data.push( b[i].unit_price );
-                data.chartData.datasets[1].data.push( s[i].unit_price );
-            }
+            //     data.chartData.labels.push( b[i].listing_datetime.slice(0,10) );
+            //     data.chartData.datasets[0].data.push( b[i].unit_price );
+            //     data.chartData.datasets[1].data.push( s[i].unit_price );
+            // }
             res.send(data);
-        });
+        }).catch(function(error){
+            console.log(error);
+        })
     });
 };
