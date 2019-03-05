@@ -31,7 +31,7 @@ var getHighScores = function(data){
 module.exports = function (app) {
     app.get('/api/history/:id',function(req,res){
      
-
+        // readies historical buy and sell data along with basic item data requests for promise
         var buying = axios.get("http://www.gw2spidy.com/api/v0.9/json/listings/"+req.params.id+"/buy/1")
         .then(getHighScores)
         .catch(function(error){
@@ -50,29 +50,28 @@ module.exports = function (app) {
         }).catch(function(error){
             console.log(error);
             res.send("error");
-        })
+        });
+
         Promise.all([buying, selling, naming]).then(function(values){
-            // res.send({buying: values[0], selling: values[1]})
 
-            // var data = values[0].map(function(element){
-
-            // })
+            // cut data to last 31 days
             var b = values[0].slice(0,31);
             var s = values[1].slice(0,31);
 
+            // filters out and returns only usable data from requests
             var bu = b.map(function(element){
                 return element.unit_price
             })
-
             var se = s.map(function(element){
                 return element.unit_price
             });
-
             var dates = b.map(function(element){
                 return element.listing_datetime.slice(0,10)
             });
 
+            // nest data into object already ready to slot into react state
             var data = {
+                id: req.params.id,
                 name: values[2].name,
                 img: values[2].icon,
                 chartData:{
@@ -100,17 +99,8 @@ module.exports = function (app) {
                     ]
                 }
             };
-            // for(var i=31 ; i > 0 ; i--){
-            //     // data[i] = {
-            //     //     date: b[i].listing_datetime.slice(0,10),
-            //     //     buying: b[i].unit_price,
-            //     //     selling: s[i].unit_price
-            //     // }
 
-            //     data.chartData.labels.push( b[i].listing_datetime.slice(0,10) );
-            //     data.chartData.datasets[0].data.push( b[i].unit_price );
-            //     data.chartData.datasets[1].data.push( s[i].unit_price );
-            // }
+            // sends object to front end
             res.send(data);
         }).catch(function(error){
             console.log(error);
