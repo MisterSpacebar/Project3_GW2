@@ -15,7 +15,7 @@ var getHighScores = function(data){
 }
 
 module.exports = function (app) {
-    app.get('/api/best',function(req,res){
+    app.get('/api/bestsell',function(req,res){
         const randomID = [12420,12406,12421,19687,8576];
 
         // wraps ids into array
@@ -62,12 +62,106 @@ module.exports = function (app) {
         });
     });
 
-    app.get('/api/worst',function(req,res){
+    app.get('/api/worstsell',function(req,res){
         const randomID = [24359,9431,24735,75015,36793];
 
         // wraps ids into array
         var besturls = randomID.map(function(element){
             return "http://www.gw2spidy.com/api/v0.9/json/listings/"+element+"/sell/1"
+        })
+
+        // readies ids for information and dumps identical array of ids 
+        var resultOrder = [];
+        var bestFunction = besturls.map(function(element){
+            return axios.get(element)
+                .then(getHighScores)
+                .then(resultOrder.push(element.slice(47,element.length-7)))
+                .catch(function(error){
+                console.log(element+" error: "+error);
+            });
+        });
+
+        Promise.all(bestFunction).then(function(values){
+
+            // turns order of results into integers for compatibility
+            result = resultOrder.map(function(element){
+                return parseInt(element)
+            })
+
+            // wraps promise results for new promise
+            var things = result.map(async function(element, index){
+                
+                let response = await axios.get("https://api.guildwars2.com/v2/items/"+element)
+                let thing = {
+                    id: element,
+                    name: response.data.name,
+                    price: values[index][0].unit_price,
+                    difference: values[index][0].unit_price - values[index][1].unit_price
+                };
+                return thing;
+            });
+
+            // sends frontend data 
+            Promise.all(things).then(function(values){
+                res.json(values)
+            })
+
+        });
+    });
+
+    app.get('/api/bestbuy',function(req,res){
+        const randomID = [12420,12406,12421,19687,8576];
+
+        // wraps ids into array
+        var besturls = randomID.map(function(element){
+            return "http://www.gw2spidy.com/api/v0.9/json/listings/"+element+"/buy/1"
+        })
+
+        // readies ids for information and dumps identical array of ids 
+        var resultOrder = [];
+        var bestFunction = besturls.map(function(element){
+            return axios.get(element)
+                .then(getHighScores)
+                .then(resultOrder.push(element.slice(47,element.length-7)))
+                .catch(function(error){
+                console.log(element+" error: "+error);
+            });
+        });
+
+        Promise.all(bestFunction).then(function(values){
+
+            // turns order of results into integers for compatibility
+            result = resultOrder.map(function(element){
+                return parseInt(element)
+            })
+
+            // wraps promise results for new promise
+            var things = result.map(async function(element, index){
+                
+                let response = await axios.get("https://api.guildwars2.com/v2/items/"+element)
+                let thing = {
+                    id: element,
+                    name: response.data.name,
+                    price: values[index][0].unit_price,
+                    difference: values[index][0].unit_price - values[index][1].unit_price
+                };
+                return thing;
+            });
+
+            // sends frontend data 
+            Promise.all(things).then(function(values){
+                res.json(values)
+            })
+
+        });
+    });
+
+    app.get('/api/worstbuy',function(req,res){
+        const randomID = [24359,9431,24735,75015,36793];
+
+        // wraps ids into array
+        var besturls = randomID.map(function(element){
+            return "http://www.gw2spidy.com/api/v0.9/json/listings/"+element+"/buy/1"
         })
 
         // readies ids for information and dumps identical array of ids 
