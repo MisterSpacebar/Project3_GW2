@@ -3,6 +3,7 @@ const axios = require('axios');
 module.exports = function (app) {
     app.get('/api/item/:id',function(req,res){
 
+        // readies arrays for promise
         var itemInfo = axios.get("https://api.guildwars2.com/v2/items/"+req.params.id)
         .then(function(response){
             // console.log(response.data);
@@ -14,7 +15,7 @@ module.exports = function (app) {
                 restriction: item.flags,
                 icon: item.icon
             }
-        }).catch(function(error){console.log("item data error:\n"+error);});
+        }).catch(function(error){res.send("item data GET error");console.log("item data error:\n"+error);});
         var itemPrice = axios.get("https://api.guildwars2.com/v2/commerce/prices/"+req.params.id)
         .then(function(response){
             // console.log(response.data);
@@ -29,8 +30,9 @@ module.exports = function (app) {
                     price: price.sells.unit_price
                 }
             }
-        }).catch(function(error){console.log("item pricing error:\n"+error);});
+        }).catch(function(error){res.send("item pricing GET error");console.log("item pricing error:\n"+error);});
 
+        // runs and sends data to frontend
         Promise.all([itemInfo,itemPrice]).then(function(responses){res.send(
             {
                 id: req.params.id,

@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     item_type: {
         type: Sequelize.STRING,
         allowedNull: false
-    }, {});
+    }});
   item.associate = function(models) {
     // associations can be defined here
     // Shop hasMany Coffees
