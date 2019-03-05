@@ -1,11 +1,13 @@
-import React from 'react';
+import React , {Component} from 'react';
 import './UserFavourites.css';
-import UserFavItem from './UserFavouritesItem/UserFavouritesItem'
+import UserFavItem from './UserFavouritesItem/UserFavouritesItem';
 
-
-const userFavourites =(props)=> props.userFavList.map(item =>{
-    return (
+class UserFavourites extends Component{ 
+  render(){
+    return this.props.userFavList.map(item => {
+      return (
                 <UserFavItem 
+                class={item.class}
                   srcImg = {item.src}
                   itemFavName={item.name}
                   fav_buy_price ={item.favBuyPrice}
@@ -13,7 +15,7 @@ const userFavourites =(props)=> props.userFavList.map(item =>{
                   id={item.id}
                   key={item.id} 
                   />      
-        )
-})
-        
-export default userFavourites;
+        );
+});
+}};        
+export default UserFavourites;

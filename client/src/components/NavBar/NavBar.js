@@ -7,7 +7,7 @@ const navBar = (props) => (
 <Navbar brand='logo' right>
     <Search
     // className='red lighten-5 black-text'
-    typeText='text'
+    typeText='id number'
     typeButton='submit'
     nameInput='search'
     nameButton='submit'
