@@ -7,12 +7,6 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 class userFavNav extends Component{
-    // constructor(props){
-    //     super(props);
-     
-    //     //this.loadFavItemData = this.loadFavItemData.bind(this);
-    //     //this.handleChange = this.handleChange.bind(this);
-    // }
     state = {        
         favItemData:[    
             {id:0,
@@ -54,25 +48,8 @@ class userFavNav extends Component{
             this.setState({ favData: this.state.favData });
         })
           .catch(err => console.log(err));
-          
-         //this.carouselFidderHandler(value);
-      };
- 
-        carouselFidderHandler=()=>{
-        // const itemCarousel =[...this.state.favItemData];
-        // itemCarousel.push(id);
-        // this.setState({favData:this.state.favItemData})
-    
-
-        const itemCarouselFull = this.state.favData;
-        const itemCarouselEmpty = this.state.favItemData;
-        itemCarouselEmpty.push(itemCarouselFull);
-        console.log("Full: " + itemCarouselFull);
-        console.log("Empty: " + itemCarouselEmpty);
-        this.setState({favData: itemCarouselFull.concat(itemCarouselEmpty)});
       };
       
-
     render(){
         console.log(this.state);
         return(
@@ -91,14 +68,6 @@ class userFavNav extends Component{
                 >
                 <UserFavourites userFavList={this.state.favData}/>
                 </OwlCarousel>
-                {/* <p onCLick={this.loadFavItemData(24)} >
-                    CHECK:
-                    <img src = {this.state.srcImg} alt='img' />  
-                    {this.state.name} 
-                    buy price {this.state.buy_price} 
-                    sell price {this.state.sell_price}
-                </p>  
-                */}
             </div>
         )
     }
