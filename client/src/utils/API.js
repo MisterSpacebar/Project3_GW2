@@ -13,6 +13,9 @@ export default {
   getItem: function (id) {
     return axios.get("/api/item/" + id);
   },
+  getBestSell: function(){
+    return axios.get("api/best");
+  },
   searchItem: function (name) {
     axios.get("http://www.gw2spidy.com/api/v0.9/json/item-search/" + name + "/1")
       .then(function (response) {

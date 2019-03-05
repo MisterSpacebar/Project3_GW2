@@ -1,6 +1,5 @@
 import React from "react";
-//import API from "../../utils/API/";
-import {Row, Input, Button} from 'react-materialize';
+import {Input, Button} from 'react-materialize';
 
 const search = (props) => (
     
@@ -13,6 +12,4 @@ const search = (props) => (
  
 
 );
-
-
 export default search;

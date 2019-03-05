@@ -6,13 +6,12 @@ import UserFavourites from '../components/UserFavourites/UserFavourites';
 import { Card,Col } from 'react-materialize';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
-//import 'owl.carousel/dist/assets/owl.theme.default.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 class userFavNav extends Component{
     state = {        
         favItemData:[    
             {
-            class:"item",
             id:0,
             name:"",
             favBuyPrice:0,
@@ -40,7 +39,6 @@ class userFavNav extends Component{
 
         API.getHistory(value)
           .then(res =>{
-            //console.log(res.data);
             let newFav = { 
                 id:res.data.id,
                 name: res.data.name, 
@@ -58,7 +56,7 @@ class userFavNav extends Component{
         console.log(this.state);
         return(
             <div>
-                <NavBar right 
+                <NavBar 
                 value={this.state.id} 
                 onSubmit={this.loadFavItemData.bind(this)} 
                 onChange={this.handleChange}/>
@@ -70,8 +68,8 @@ class userFavNav extends Component{
                     margin={10}
                     nav
                 >
-                <Card s={12} className='item grey lighten-4 black-text'>Start your item collection here</Card> 
-                 <UserFavourites s={12} userFavList={this.state.favData}/>
+                <Card s={12} className='item'>Start your item collection here</Card> 
+                 <UserFavourites s={12} className='item grey lighten-4 black-text' userFavList={this.state.favData}/>
 
                 </OwlCarousel> 
                 </Col>

@@ -7,8 +7,9 @@ const itemBest = (props) => {
 
                 <Card className="Item">
 
-                        <p onClick={props.click}>{props.itemName} 
-                        Price: {props.itemPrice} 
+                        <p onClick={props.click}>{props.itemName}<br /> 
+                        Price: {props.itemPrice} <br />
+                        Difference: {props.difference}
                         </p>
                         <p>{props.children}</p>
 

@@ -7,6 +7,7 @@ const itemBestCollection =(props)=>props.itemsBest.map(item =>{
   <ItemBest
   itemName={item.name}
   itemPrice ={item.price}
+  difference={item.difference}
   id={item.id}
   key={item.id} />)
 })

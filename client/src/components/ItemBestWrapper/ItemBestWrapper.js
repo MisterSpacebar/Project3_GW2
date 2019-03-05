@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import API from '../../utils/API'
 import { Collection, Button } from 'react-materialize';
 import ItemBestCollection from "./ItemBestCollection/ItemBestCollection";
 
@@ -12,11 +13,11 @@ class ItemBestWrapper extends Component {
             { id: 28, name: 'NameE', price: 18 }
         ],
         itemBestSellData: [
-            { id: 34, name: 'NameAA', price: 24 },
-            { id: 35, name: 'NameBB', price: 25 },
-            { id: 36, name: 'NameCC', price: 26 },
-            { id: 37, name: 'NameDD', price: 27 },
-            { id: 38, name: 'NameEE', price: 28 }
+            // { id: 34, name: 'NameAA', price: 24 },
+            // { id: 35, name: 'NameBB', price: 25 },
+            // { id: 36, name: 'NameCC', price: 26 },
+            // { id: 37, name: 'NameDD', price: 27 },
+            // { id: 38, name: 'NameEE', price: 28 }
         ],
         data: []
     }
@@ -33,6 +34,13 @@ class ItemBestWrapper extends Component {
     itemBestSellHandler = () => {
         const dataSell = this.state.itemBestSellData;
         this.setState({ data: dataSell });
+
+        API.getBestSell()
+        .then(res =>{
+        const sellData=res.data;
+        this.setState({ data: sellData});
+      })
+        .catch(err => console.log(err));
     }
     render() {
         return (
@@ -42,7 +50,7 @@ class ItemBestWrapper extends Component {
                     <Button title="best-sell" onClick={this.itemBestSellHandler} >Best Sell</Button>
                 </div>
                 <Collection>
-                    <ItemBestCollection itemsBest={this.state.data} />
+                    <ItemBestCollection itemsBest={this.state.data}/>
                 </Collection>
 
             </div>
