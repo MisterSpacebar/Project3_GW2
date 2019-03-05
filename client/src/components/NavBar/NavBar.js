@@ -1,23 +1,23 @@
 import React from "react";
 //import API from "../../utils/API/";
-import {Navbar, NavItem, Autocomplete} from 'react-materialize';
+import {Navbar, NavItem} from 'react-materialize';
+import Search from './Search/Search';
 
-const navBar = () => (
+const navBar = (props) => (
 <Navbar brand='logo' right>
-  <Autocomplete
-    className='red lighten-5 black-text'
-    title='Example'
-    data={
-      {
-        'Apple': null,
-        'Microsoft': null,
-        'Google': 'http://placehold.it/250x250'
-      }
-    }
-  />
-<NavItem href='/' left>Home</NavItem>
-<NavItem href='/user'left>User</NavItem>
-<NavItem href='/about'left>About</NavItem>
+    <Search
+    // className='red lighten-5 black-text'
+    typeText='text'
+    typeButton='submit'
+    nameInput='search'
+    nameButton='submit'
+    value={props.value}
+    onSubmit={props.onSubmit}
+    onChange={props.onChange}
+    />
+  <NavItem href='/' left>Home</NavItem>
+  <NavItem href='/user'left>User</NavItem>
+  <NavItem href='/about'left>About</NavItem>
 </Navbar> 
 
 );

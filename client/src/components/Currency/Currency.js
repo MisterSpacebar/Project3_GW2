@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import API from "../../utils/API";
 import {Card} from 'react-materialize';
-
 class Currency extends Component {
     state = {
         quantity:0,

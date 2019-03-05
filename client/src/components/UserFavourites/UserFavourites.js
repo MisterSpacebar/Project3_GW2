@@ -1,35 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './UserFavourites.css';
-import {Card, Col} from 'react-materialize';
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
+import UserFavItem from './UserFavouritesItem/UserFavouritesItem'
 
-class UserFavourites extends Component {
-    render() {
-        return (
-<Col s={12} >
-    <OwlCarousel
-    className="owl-theme"
-    loop
-    rtl
-    margin={10}
-    nav
-    >
-    <Card s={12} className="item grey lighten-4 black-text">
-    <span>item 1</span>
-    </Card>          
-    <Card s={12} className="item grey lighten-4 black-text">
-    <span>Item 2</span>
-    </Card>
-    <Card s={12} className="item grey lighten-4 black-text">
-    <span>Item 3</span>
-    </Card>
-    <Card s={12} className="item grey lighten-4 black-text">
-    <span>Item 4</span>
-    </Card>    
-    </OwlCarousel>
-</Col>
-        )}
-}
-export default UserFavourites;
+
+const userFavourites =(props)=> props.userFavList.map(item =>{
+    return (
+                <UserFavItem 
+                  srcImg = {item.src}
+                  itemFavName={item.name}
+                  fav_buy_price ={item.favBuyPrice}
+                  fav_sell_price ={item.favSellPrice}
+                  id={item.id}
+                  key={item.id} 
+                  />      
+        )
+})
+        
+export default userFavourites;
