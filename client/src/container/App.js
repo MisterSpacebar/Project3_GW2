@@ -7,77 +7,89 @@ import Chart from '../components/GraphWindow/Chart';
 import UserFavourites from '../components/UserFavourites/UserFavourites';
 import Currency from '../components/Currency/Currency';
 import ItemBestWrapper from '../components/ItemBestWrapper/ItemBestWrapper'
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
 class App extends Component {
-  // state = {
-  //   currency:[]
-  //   id: 24,
-  //   itemReturn: [],
-  //   itemName: "",
-  //   buyPrice: "",
-  //   sellPrice: ""
+  constructor(props) {
+    super(props);
 
-  // }
-
-
-  // loadItem = id => {
-  //   console.log('Id Returned: ', id)
-  //   API.getItem(id)
-  //     .then(res =>
-  //       this.setState({ itemReturn: res.data.data, itemName: res.data.data.name, buyPrice: res.data.pricing.buyng.price, sellPrice: res.data.pricing.selling.price, })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
-
-// loadCurrency =()=>{
-//   API.getGems()
-//     .then(res =>
-//       this.setState({ itemReturn: res.data.data, itemName: res.data.data.name, buyPrice: res.data.pricing.buyng.price, sellPrice: res.data.pricing.selling.price, })
-//     )
-//     .catch(err => console.log(err));
-// }
-//   componentDidMount() {
-//    // this.loadItem()
-//    this.loadCurrency();
-//   };
-
-
-  render() {
-
-    return (
-      <div className="mainContainer">
-        <Row>
-          <div>
-            <NavBar />
-            <Row>
-              <UserFavourites />
-            </Row>
-            <Row>
-              <Col m={8} s={12}>
-                <Chart />
-              </Col>
-              <Col m={4} s={12}>
-                <Currency />
-                <ItemBestWrapper />
-              </Col>
-            </Row>
-
-            {/* <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/user" component={User} />
-            <Route exact path="/about" component={About} />
-          </Switch> */}
-          </div>
-        </Row>
-        <Row>
-          {/* <Button waves='light' onClick={() => this.loadItem(this.state.id)}>Test!</Button>
-          <div>{JSON.stringify(this.state.item)}</div> */}
-        </Row>
-      </div>
-    );
+    this.state = {
+      currency: [],
+      id: 24,
+      itemReturn: [],
+      itemName: "",
+      icon: "",
+      buyPrice: "",
+      sellPrice: "",
+      data: null
+    };
   }
-}
 
-export default App;
+
+    loadItem = id => {
+      console.log('Id Returned: ', id)
+      API.getItem(id)
+        .then(res =>
+          this.setState({ itemReturn: res.data.data, itemName: res.data.data.name, buyPrice: res.data.pricing.buyng.price, sellPrice: res.data.pricing.selling.price, })
+        )
+        .catch(err => console.log(err));
+    };
+
+    loadCurrency = () => {
+      API.getGems()
+        .then(res =>
+          this.setState({ itemReturn: res.data.data, itemName: res.data.data.name, buyPrice: res.data.pricing.buyng.price, sellPrice: res.data.pricing.selling.price, })
+        )
+        .catch(err => console.log(err));
+    };
+
+
+    grabItemFavourites =()=>{
+      API.getItem()
+        .then(res =>
+          this.setState({
+            itemName: res.data.data.name, icon: res.data.data.icon, buyPrice: res.data.pricing.buyng.price, sellPrice: res.data.pricing.selling.price
+          })
+        )
+        .catch(err => console.log(err));
+    };
+
+    componentDidMount() {
+      // this.loadItem()
+      this.loadCurrency();
+      // fetch('/api/item/:id')
+      //   .then(response => response.json())
+      //   .then(data => this.setState({ data }))
+
+    };
+
+
+    render() {
+
+      return (
+        <div className="mainContainer">
+          <Row>
+            <div>
+              <NavBar />
+              <Row>
+                <UserFavourites 
+                grabItemCarousel={this.grabItemCarousel}
+                />
+              </Row>
+              <Row>
+                <Col m={8} s={12}>
+                  <Chart />
+                </Col>
+                <Col m={4} s={12}>
+                  <Currency />
+                  <ItemBestWrapper />
+                </Col>
+              </Row>
+            </div>
+          </Row>
+        </div>
+      );
+    }
+  }
+
+  export default App;

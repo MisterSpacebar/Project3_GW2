@@ -22,11 +22,11 @@ class ItemBestWrapper extends Component {
         ],
         data: []
     }
-    
+
     componentDidMount() {
         this.itemBestBuyHandler()
-      };
-    
+    };
+
 
     // setDefaultState = () => {
     //     const defaultData = this.state.itemBestBuyData;
@@ -59,7 +59,7 @@ class ItemBestWrapper extends Component {
                     <Button title="best-sell" onClick={this.itemBestSellHandler} active>Best Sell</Button>
                 </div>
                 <Collection>
-                    <ItemBestCollection itemsBest={this.state.data} />
+                    <ItemBestCollection itemsBest={this.state.data} grabItemCarousel={this.grabItemCarousel} />
                 </Collection>
 
             </div>
