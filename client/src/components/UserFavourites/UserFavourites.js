@@ -19,11 +19,11 @@ class UserFavourites extends Component {
                     nav
                 >
                     <ItemBest
-                        itemName={this.props.itemName}
-                        itemBuyPrice={this.props.buyPrice}
-                        itemSellPrice={this.props.sellPrice}
-                        id={this.props.id}
-                        key={this.props.id} />
+                        itemName={props.itemName}
+                        itemBuyPrice={props.buyPrice}
+                        itemSellPrice={props.sellPrice}
+                        id={props.id}
+                        key={props.id} />
                     <Card s={12} className="item grey lighten-4 black-text">
                         <span>Item 2</span>
                     </Card>
