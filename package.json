@@ -4,6 +4,8 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "@okta/okta-react": "^1.2.0",
+    "@okta/okta-signin-widget": "^2.16.0",
     "axios": "^0.18.0",
     "bcrypt-nodejs": "0.0.3",
     "concurrently": "^4.1.0",
