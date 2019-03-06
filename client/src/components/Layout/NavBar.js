@@ -16,7 +16,7 @@ class Navbar extends Component {
 
           <Link className="navbar-brand" to="/">
 
-            Acme Staff Portal
+            Financier
 
           </Link>
 

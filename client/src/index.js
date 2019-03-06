@@ -1,12 +1,51 @@
 import React from 'react';
+
 import ReactDOM from 'react-dom';
+
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import { Security } from '@okta/okta-react';
+
+
+
 import './index.css';
-import App from './container/App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import config from './app.config';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import App from './App';
+
+// import registerServiceWorker from './registerServiceWorker';
+
+
+
+function onAuthRequired({ history }) {
+
+  history.push('/login');
+
+}
+
+
+
+ReactDOM.render(
+
+  <Router>
+
+    <Security issuer={config.issuer}
+
+      client_id={config.client_id}
+
+      redirect_uri={config.redirect_uri}
+
+      onAuthRequired={onAuthRequired}>
+
+      <App />
+
+    </Security>
+
+  </Router>,
+
+  document.getElementById('root')
+
+);
+
+// registerServiceWorker();

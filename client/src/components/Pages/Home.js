@@ -74,7 +74,7 @@ export default withAuth(
 
             You have entered the staff portal,{' '}
 
-            <Link to="/staff">click here</Link>
+            <Link to="/register">click here</Link>
 
           </p>
 
@@ -103,6 +103,7 @@ export default withAuth(
             Login
 
           </button>
+          
 
         </div>
 
@@ -114,7 +115,7 @@ export default withAuth(
 
         <div className="jumbotron">
 
-          <h1 className="display-4">Acme Staff Portal</h1>
+          <h1 className="display-4">Financier</h1>
 
           {mainContent}
 
