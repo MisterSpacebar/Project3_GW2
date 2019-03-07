@@ -1,6 +1,7 @@
 const axios = require('axios');
 const _ = require('lodash');
 const fp = require('lodash/fp');
+const cheerio = require('cheerio');
 
 var getHighScores = function(data){
     var sellDates = _.uniq(data.data.results.map((item)=> item.listing_datetime.slice(0,10))).slice(0, 31);
@@ -14,9 +15,32 @@ var getHighScores = function(data){
     return sellResult.slice(0,2);
 }
 
+// let positive = [];
+// let negative = [];
+
+var scrape = []
+
 module.exports = function (app) {
+    app.get('/api/load',function(req,res){
+        axios.get('https://www.gw2tp.com/')
+        .then(function(response){
+            var $ = cheerio.load(response.data);
+
+            $('table tbody tr .align-left').each(function(i,element){
+                // if(i<5){ positive[i] = parseInt($(this).children('a').attr('data-id')); }
+                // if(i>4){ negative[i] = parseInt($(this).children('a').attr('data-id')); }
+                // console.log(positive);
+                // console.log(negative);
+                scrape.push(parseInt($(this).children('a').attr('data-id')));
+            });
+            console.log(scrape);
+            res.send(scrape);
+        })
+    })
+
     app.get('/api/bestsell',function(req,res){
-        const randomID = [12420,12406,12421,19687,8576];
+        const randomID = scrape.slice(0,5);
+        //[12420,12406,12421,19687,8576];
 
         // wraps ids into array
         var besturls = randomID.map(function(element){
@@ -63,7 +87,8 @@ module.exports = function (app) {
     });
 
     app.get('/api/worstsell',function(req,res){
-        const randomID = [24359,9431,24735,75015,36793];
+        const randomID = scrape.slice(5,10);
+        //[24359,9431,24735,75015,36793];
 
         // wraps ids into array
         var besturls = randomID.map(function(element){
@@ -110,7 +135,8 @@ module.exports = function (app) {
     });
 
     app.get('/api/bestbuy',function(req,res){
-        const randomID = [12420,12406,12421,19687,8576];
+        const randomID = scrape.slice(0,5);
+        //[12420,12406,12421,19687,8576];
 
         // wraps ids into array
         var besturls = randomID.map(function(element){
@@ -157,7 +183,8 @@ module.exports = function (app) {
     });
 
     app.get('/api/worstbuy',function(req,res){
-        const randomID = [24359,9431,24735,75015,36793];
+        const randomID = scrape.slice(5,10);
+        //[24359,9431,24735,75015,36793];
 
         // wraps ids into array
         var besturls = randomID.map(function(element){
