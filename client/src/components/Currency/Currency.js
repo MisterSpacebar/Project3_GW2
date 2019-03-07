@@ -26,7 +26,7 @@ class Currency extends Component {
         var gold = parseInt(silver/100);
         currency.gold = gold;
     
-        return currency.gold+" Gold, "+currency.silver
+        return currency.gold+" Gold, "+currency.silver+" Silver, "+currency.copper+" Copper"
     }
 
     render(){
@@ -36,8 +36,8 @@ class Currency extends Component {
             textClassName='black-text' 
             title='Currency ' 
             >
-            Coins per gem {this.state.coins_per_gem}, 
-            quantity {this.state.coins_per_gem}
+            <p>Coins per 250 gem: {this.currencyTranslate(this.state.coins_per_gem*250)}</p>
+            <p>Quantity: {this.state.coins_per_gem}</p>
         </Card>
         )}
 };
