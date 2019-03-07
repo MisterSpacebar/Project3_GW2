@@ -1,0 +1,16 @@
+.Item {
+    text-align: center;
+}
+.Item .card-content {
+ padding-top:10px !important;
+ padding-bottom:10px;
+}
+.Item .name{
+    font-weight: bold;
+    font-size: 15px;
+}
+.Item  span{
+    margin-left: 3px;
+    font-weight: lighter;
+    font-size: 15px;
+}

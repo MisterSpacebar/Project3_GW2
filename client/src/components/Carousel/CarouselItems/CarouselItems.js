@@ -18,4 +18,4 @@ class CarouselItems extends Component{
         ); 
   });
 }};        
-export default CarouselItems; 
+export default CarouselItems;  

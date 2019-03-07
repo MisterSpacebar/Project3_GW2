@@ -1,10 +1,10 @@
 import React from "react";
-//import './Input.css'
+import './Input.css'
 import {Input, Button} from 'react-materialize';
 
 const input = (props) =>   {
     return (
-        <form onSubmit={props.onSubmit}>
+        <form onSubmit={props.onSubmit} className='Input'> 
             <Input 
             label={props.label} 
             placeholder={props.typeText} 

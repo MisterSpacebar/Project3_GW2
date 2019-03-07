@@ -1,22 +1,23 @@
-.Input{
-    width:100%;padding:10px;
-    box-sizing: border-box;
+.Input .input-field {
+    margin-top: 0 !important;
 }
-.Label{
-    font-weight: bold;
-    display:block;
-    margin-bottom: 8px;
+.Input .btn {height: 45px;}
+
+ input:-internal-autofill-previewed, 
+input:-internal-autofill-selected, 
+textarea:-internal-autofill-previewed,
+ textarea:-internal-autofill-selected, 
+ select:-internal-autofill-previewed, 
+ select:-internal-autofill-selected{
+background-color: #ACFCD9 !important;
 }
-.InputElement{
-    outline:none;
-    border:1px solid #ccc;
-    background-color:white;
-    font:inherit;
-    padding:6px 10px;
-    display:block;
-    width:100%;
-}
-.InputElement:focus{
-    outline:none;
-    background-color:#ccc;
+ input:not([type]), 
+input[type=text], 
+input[type=password], 
+input[type=email], input[type=url], 
+input[type=time], input[type=date], 
+input[type=datetime], input[type=datetime-local],
+ input[type=tel], input[type=number], 
+ input[type=search], textarea.materialize-textarea{
+    background-color: #ACFCD9 !important; 
 }

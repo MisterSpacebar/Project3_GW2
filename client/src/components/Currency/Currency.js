@@ -1,11 +1,12 @@
 import React, {Component} from "react";
+import './Currency.css';
 import API from "../../utils/API";
 import {Card} from 'react-materialize';
 class Currency extends Component {
     state = {
         quantity:0,
         coins_per_gem:0
-    }
+    } 
     loadCurrency =()=>{
         API.getGems()
           .then(res =>
@@ -32,12 +33,12 @@ class Currency extends Component {
     render(){
         return(  
         <Card 
-            className='grey lighten-2' 
+            className='Currency'
             textClassName='black-text' 
-            title='Currency ' 
+            title='Exchange Rate ' 
             >
-            Coins per gem {this.state.coins_per_gem}, 
-            quantity {this.state.coins_per_gem}
+            Coins Per Gem: {this.state.coins_per_gem} <br />
+            Quantity: {this.state.quantity}
         </Card>
         )}
 };

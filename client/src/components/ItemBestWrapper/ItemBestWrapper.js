@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import API from '../../utils/API'
+import API from '../../utils/API';
 import { Collection, Button } from 'react-materialize';
+import './ItemBestWrapper.css';
 import ItemBestCollection from "./ItemBestCollection/ItemBestCollection";
 
 class ItemBestWrapper extends Component {
@@ -14,10 +15,6 @@ class ItemBestWrapper extends Component {
       };
     
     itemBestBuyHandler = () => {
-        // const dataBuy = this.state.itemBestBuyData;
-        // this.setState({ data: dataBuy });
-        // API.loadBestItems()
-        // .then(
             console.log('clicked buy')
             API.getBestBuy()
             .then(res =>{
@@ -26,28 +23,22 @@ class ItemBestWrapper extends Component {
             this.setState({ data: buyData});
             })
             
-        // ).catch(err => console.log(err));
-
     }
 
     itemBestSellHandler = () => {
-        // const dataSell = this.state.itemBestSellData;
-        // this.setState({ data: dataSell });
-        // API.loadBestItems()
-        // .then(
+   
             API.getBestSell()
             .then(res =>{
             const sellData=res.data;
             this.setState({ data: sellData});
             })
             
-        // ).catch(err => console.log(err));
     }
 
     render() {
         return (
             <div>
-                <div>
+                <div className="ItemBestWrapper">
                     <Button title="best-buy" onClick={this.itemBestBuyHandler}>Best Buy</Button>
                     <Button title="best-sell" onClick={this.itemBestSellHandler} >Best Sell</Button>
                 </div>

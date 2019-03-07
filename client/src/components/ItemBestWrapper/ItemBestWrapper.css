@@ -1,0 +1,6 @@
+.ItemBestWrapper{
+text-align: center;
+}
+.ItemBestWrapper .btn, .btn-large {
+    margin-left:5px !important;
+}

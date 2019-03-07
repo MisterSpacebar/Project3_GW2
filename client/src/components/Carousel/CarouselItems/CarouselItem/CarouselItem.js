@@ -9,8 +9,8 @@ return (
                 <img src = {props.src} alt='img' />
                         <p>
                         <h1>{props.itemName}</h1>
-                        buy price {props.buy_price}
-                        sell price {props.sell_price}
+                        <span>buy price {props.buy_price}|</span>
+                        <span>sell price {props.sell_price}</span>
                         </p>
                 </div>
         </Card> 

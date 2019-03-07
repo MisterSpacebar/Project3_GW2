@@ -2,6 +2,7 @@ import React , {Component} from 'react';
 import CarouselItems from './CarouselItems/CarouselItems';
 import Input from './Input/Input';
 import API from "../../utils/API";
+import './Carousel.css';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -69,7 +70,7 @@ class Carousel extends Component{
       return ( 
           <div>
                <Row s={12}> 
-                   <Input  
+                   <Input  s={4} m={4}
                     typeText='id number'
                     typeButton='submit'
                     nameInput='search'
@@ -78,22 +79,22 @@ class Carousel extends Component{
                     onSubmit={this.handleSubmit}
                     onChange={this.handleChange}
                     />
-                </Row>
+                
                 <Col s={12}>
-                   <OwlCarousel
+                   <OwlCarousel s={8} m={8}
                     className="owl-theme"
                     loop
                     rtl
                     margin={10}
-                    nav
-                >
-                <Card s={12} className='item'>Start your item collection here</Card> 
-                <CarouselItems s={12} 
-                    className="item"
-                    carouselList={this.state.carouselData}
-                    clicked={this.props.handleChartData}/>  
+                    nav>
+                    <Card s={12} className='item startCard'>Start your item collection here</Card> 
+                    <CarouselItems s={12} 
+                        className="item"
+                        carouselList={this.state.carouselData}
+                        clicked={this.props.handleChartData}/>  
                 </OwlCarousel>               
-            </Col>
+                </Col>
+            </Row>
             </div>    
         );
 }};
