@@ -3,7 +3,7 @@ import { Card } from 'react-materialize';
 
 const carouselItem = (props) => {
 return (
-        <Card onClick={props.clicked}>                  
+        <Card onClick={e => { props.clicked(e, props.chartdata);}} id={props.id}>                       
                 <p data={props.chartdata}> 
                 <img src = {props.src} alt='img' />
                 {props.itemName}

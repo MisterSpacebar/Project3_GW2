@@ -5,16 +5,17 @@ class CarouselItems extends Component{
   render(){
     return this.props.carouselList.map(item => {
       return (
-                <CarouselItem
-                chartdata={item.chartData}
+                <CarouselItem          
+                  id={item.id}
+                  chartdata={item.chartData}
                   src = {item.src}
                   itemName={item.name}
                   buy_price ={item.buyPrice}
                   sell_price ={item.sellPrice}
-                  id={item.id}
                   key={item.id} 
+                  clicked={this.props.clicked}
                   />      
-        );
-});
+        ); 
+  });
 }};        
 export default CarouselItems; 

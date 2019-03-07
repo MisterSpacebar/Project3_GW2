@@ -14,7 +14,7 @@ class Carousel extends Component{
        this.state = {        
         favItemData:[    
             {value:'',
-            id:undefined,
+            id:0,
             name:"",
             favBuyPrice:0,
             favSellPrice:0,
@@ -33,12 +33,13 @@ class Carousel extends Component{
 
     handleChange=(e)=>{
         e.preventDefault();
-        const value = e.target.value;
+        let value = e.target.value;
         this.setState({
             value: value,
             id: value
         })
     };
+
     handleSubmit =(e) => {
         e.preventDefault();      
         const value = e.target.input_0.value;
@@ -60,10 +61,13 @@ class Carousel extends Component{
           .catch(err => console.log(err));
           console.log(this.state.carouselData)
       };
-      handeleChartData=(e, data)=>{
-        const newData=data;
+
+      handleChartData=(e, selectedChartData)=>{
         e.preventDefault();
-        this.setState({graphData:newData})
+        console.log(selectedChartData);
+        let newData=this.state.chartData;
+        
+        this.setState({graphData: selectedChartData});
       }
   render(){
 
@@ -90,9 +94,9 @@ class Carousel extends Component{
                 >
                 <Card s={12} className='item'>Start your item collection here</Card> 
                 <CarouselItems s={12} 
-                className='item' 
-                 carouselList={this.state.carouselData}
-                 clicked={this.handeleChartData.bind(this, this.state.chartData)}/>  
+                    className="item"
+                    carouselList={this.state.carouselData}
+                    clicked={this.handleChartData}/>  
                 </OwlCarousel>               
             </Col>
             <Chart chartdata={this.state.graphData}/>
