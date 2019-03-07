@@ -36,8 +36,8 @@ class Currency extends Component {
             textClassName='black-text' 
             title='Currency ' 
             >
-            <p>Coins per 250 gem: {this.currencyTranslate(this.state.coins_per_gem*250)}</p>
-            <p>Quantity: {this.state.coins_per_gem}</p>
+            <p><b>Coins per 250 gem:</b> {this.currencyTranslate(this.state.coins_per_gem*250)}</p>
+            <p><b>Quantity:</b> {this.state.coins_per_gem}</p>
         </Card>
         )}
 };

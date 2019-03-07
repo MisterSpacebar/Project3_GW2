@@ -65,6 +65,7 @@ module.exports = function (app) {
                 let response = await axios.get("https://api.guildwars2.com/v2/items/"+element)
                 let thing = {
                     id: element,
+                    image: response.data.icon,
                     name: response.data.name,
                     price: values[index][0].unit_price,
                     difference: values[index][0].unit_price - values[index][1].unit_price
@@ -113,6 +114,7 @@ module.exports = function (app) {
                 let response = await axios.get("https://api.guildwars2.com/v2/items/"+element)
                 let thing = {
                     id: element,
+                    image: response.data.icon,
                     name: response.data.name,
                     price: values[index][0].unit_price,
                     difference: values[index][0].unit_price - values[index][1].unit_price
@@ -161,6 +163,7 @@ module.exports = function (app) {
                 let response = await axios.get("https://api.guildwars2.com/v2/items/"+element)
                 let thing = {
                     id: element,
+                    image: response.data.icon,
                     name: response.data.name,
                     price: values[index][0].unit_price,
                     difference: values[index][0].unit_price - values[index][1].unit_price
@@ -209,6 +212,7 @@ module.exports = function (app) {
                 let response = await axios.get("https://api.guildwars2.com/v2/items/"+element)
                 let thing = {
                     id: element,
+                    image: response.data.icon,
                     name: response.data.name,
                     price: values[index][0].unit_price,
                     difference: values[index][0].unit_price - values[index][1].unit_price

@@ -6,15 +6,16 @@ const itemBest = (props) => {
         return (
 
                 <Card className="Item">
-
-                        <p onClick={props.click}>{props.itemName}<br /> 
+                        
+                        <p onClick={props.click}>
+                        
+                        <b>{props.itemName}</b><br /> 
                         Price: {props.itemPrice} <br />
                         Difference: {props.difference}
                         </p>
                         <p>{props.children}</p>
 
                 </Card>
-
         )
 };
 
