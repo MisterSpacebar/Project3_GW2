@@ -1,6 +1,7 @@
 .Card { 
-    background-color: #ACFCD9;
+    background-color: #33C7CB;
     border:1px solid black;
+    border-radius: 10px;
 }
 .Card div{
     display:flex;

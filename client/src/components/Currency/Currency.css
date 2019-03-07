@@ -1,8 +1,10 @@
 .Currency{
-    background:#55D6BE;
+    background:#33C7CB;
     padding: 5px;
     color:black;
     text-align: center;
+    border-radius: 2px black;
+    border-radius: 10px;
 }
 .Currency span {
     font-size: 20px !important;

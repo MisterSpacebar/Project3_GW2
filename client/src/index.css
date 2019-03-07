@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #7D5BA6;
+  background-color: #195369;
   font-family:'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -10,4 +10,11 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+.collection {
+  border: none;
+}
+
+button {
+  background-color: #007C7C !important;
 }

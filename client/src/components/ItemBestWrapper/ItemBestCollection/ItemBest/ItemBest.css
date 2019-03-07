@@ -1,9 +1,14 @@
 .Item {
     text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
 }
 .Item .card-content {
  padding-top:10px !important;
  padding-bottom:10px;
+ border: 1px solid black !important;
+ border-radius: 10px !important;
+ 
 }
 .Item .name{
     font-weight: bold;

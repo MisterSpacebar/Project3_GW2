@@ -81,18 +81,18 @@ module.exports = function (app) {
                             // item name
                             label:'Buy Listings',
                             // line colour
-                            borderColor:'rgba(255, 102, 102, 0.6)',
+                            borderColor:'rgba(0,255,255, 0.6)',
                             // line bg colour
-                            backgroundColor:'rgba(255, 102, 102, 0.6)',
+                            backgroundColor:'rgba(0, 255, 255, 0.6)',
                             data:bu.reverse(),
                             yAxisId:'y-axis-1',
                         }, {
                             // item name
                             label:'Sell Listings',
                             // line colour
-                            borderColor:'rgba(204, 153, 255, 0.6)',
+                            borderColor:'rgba(0, 139, 139, 0.6)',
                             // line bg colour
-                            backgroundColor:'rgba(204, 153, 255, 0.6)',
+                            backgroundColor:'rgba(0, 139, 139, 0.6)',
                             data:se.reverse(),
                             yAxisId:'y-axis-2',
                         }

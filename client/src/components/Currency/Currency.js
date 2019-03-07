@@ -38,7 +38,7 @@ class Currency extends Component {
             title='Exchange Rate ' 
             >
             <p><b>Coins per 250 gem:</b> {this.currencyTranslate(this.state.coins_per_gem*250)}</p>
-            <p><b>Quantity:</b> {this.state.coins_per_gem}</p>
+            {/* <p><b>Quantity:</b> {this.state.coins_per_gem}</p> */}
         </Card>
         )}
 };
