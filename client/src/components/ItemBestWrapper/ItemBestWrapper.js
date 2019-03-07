@@ -27,21 +27,34 @@ class ItemBestWrapper extends Component {
       };
     
     itemBestBuyHandler = () => {
-        const dataBuy = this.state.itemBestBuyData;
-        this.setState({ data: dataBuy });
+        // const dataBuy = this.state.itemBestBuyData;
+        // this.setState({ data: dataBuy });
+        API.loadBestItems()
+        .then(
+            API.getBestBuy()
+            .then(res =>{
+            const sellData=res.data;
+            this.setState({ data: sellData});
+            })
+            
+        ).catch(err => console.log(err));
+
     }
 
     itemBestSellHandler = () => {
-        const dataSell = this.state.itemBestSellData;
-        this.setState({ data: dataSell });
-
-        API.getBestSell()
-        .then(res =>{
-        const sellData=res.data;
-        this.setState({ data: sellData});
-      })
-        .catch(err => console.log(err));
+        // const dataSell = this.state.itemBestSellData;
+        // this.setState({ data: dataSell });
+        API.loadBestItems()
+        .then(
+            API.getBestSell()
+            .then(res =>{
+            const sellData=res.data;
+            this.setState({ data: sellData});
+            })
+            
+        ).catch(err => console.log(err));
     }
+
     render() {
         return (
             <div className="wrapper">

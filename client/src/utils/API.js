@@ -13,8 +13,14 @@ export default {
   getItem: function (id) {
     return axios.get("/api/item/" + id);
   },
+  loadBestItems: function(){
+    return axios.get("api/load");
+  },
   getBestSell: function(){
-    return axios.get("api/best");
+    return axios.get("api/bestsell");
+  },
+  getBestBuy: function(){
+    return axios.get("api/bestbuy");
   },
   searchItem: function (name) {
     axios.get("http://www.gw2spidy.com/api/v0.9/json/item-search/" + name + "/1")
