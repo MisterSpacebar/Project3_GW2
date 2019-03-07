@@ -15,10 +15,7 @@ var getHighScores = function(data){
     return sellResult.slice(0,2);
 }
 
-// let positive = [];
-// let negative = [];
-
-var scrape = []
+var scrape = [];
 
 module.exports = function (app) {
     app.get('/api/load',function(req,res){
@@ -27,13 +24,10 @@ module.exports = function (app) {
             var $ = cheerio.load(response.data);
 
             $('table tbody tr .align-left').each(function(i,element){
-                // if(i<5){ positive[i] = parseInt($(this).children('a').attr('data-id')); }
-                // if(i>4){ negative[i] = parseInt($(this).children('a').attr('data-id')); }
-                // console.log(positive);
-                // console.log(negative);
+
                 scrape.push(parseInt($(this).children('a').attr('data-id')));
             });
-            console.log(scrape);
+
             res.send(scrape);
         })
     })
