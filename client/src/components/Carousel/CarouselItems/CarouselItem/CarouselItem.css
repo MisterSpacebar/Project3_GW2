@@ -1,0 +1,19 @@
+.Card div{
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width:100%;
+}
+.Card p{
+    padding-left:20px;
+}
+.Card img{
+    width:75px !important;
+    height:75px;
+}
+h1{
+    font-size: 18px;
+    font-weight: bold;
+    margin:5px 0px;
+}

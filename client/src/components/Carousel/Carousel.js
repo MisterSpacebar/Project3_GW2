@@ -6,7 +6,6 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import {Col, Row, Card} from 'react-materialize';
-import Chart from '../../components/Chart/Chart'
 
 class Carousel extends Component{ 
     constructor(props) {
@@ -30,6 +29,9 @@ class Carousel extends Component{
 }
     componentDidMount(){}
     componentDidUpdate(){}
+    // shouldComponentUpdate(){
+    //     return true;
+    // }
 
     handleChange=(e)=>{
         e.preventDefault();
@@ -60,16 +62,9 @@ class Carousel extends Component{
         })
           .catch(err => console.log(err));
           console.log(this.state.carouselData)
-      };
+    };
 
-      handleChartData=(e, selectedChartData)=>{
-        e.preventDefault();
-        console.log(selectedChartData);
-        let newData=this.state.chartData;
-        
-        this.setState({graphData: selectedChartData});
-      }
-  render(){
+    render(){
 
       return ( 
           <div>
@@ -96,10 +91,9 @@ class Carousel extends Component{
                 <CarouselItems s={12} 
                     className="item"
                     carouselList={this.state.carouselData}
-                    clicked={this.handleChartData}/>  
+                    clicked={this.props.handleChartData}/>  
                 </OwlCarousel>               
             </Col>
-            <Chart chartdata={this.state.graphData}/>
             </div>    
         );
 }};

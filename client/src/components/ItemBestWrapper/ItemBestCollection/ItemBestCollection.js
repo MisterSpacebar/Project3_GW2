@@ -2,7 +2,6 @@ import React from "react";
 import ItemBest from "./ItemBest/ItemBest"
 
 const itemBestCollection =(props)=>props.itemsBest.map(item =>{
-
   return (
   <ItemBest
   itemName={item.name}
