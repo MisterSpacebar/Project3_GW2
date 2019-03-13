@@ -81,9 +81,9 @@ module.exports = function (app) {
                             // item name
                             label:'Buy Listings',
                             // line colour
-                            borderColor:'rgba(0,255,255, 0.6)',
+                            borderColor:'rgba(0,0,0, 0.6)',
                             // line bg colour
-                            backgroundColor:'rgba(0, 255, 255, 0.6)',
+                            backgroundColor:'rgba(0, 0, 0, 0.6)',
                             data:bu.reverse(),
                             yAxisId:'y-axis-1',
                         }, {
